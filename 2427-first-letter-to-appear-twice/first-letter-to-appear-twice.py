@@ -1,7 +1,10 @@
 class Solution:
     def repeatedCharacter(self, s: str) -> str:
-        listt=[]
-        for i in s:
-            if i in listt:
-                return i
-            listt.append(i)
+        my_set = set()
+
+        for index,values in enumerate(s):
+            if values not in my_set:
+                my_set.add(values)
+            else:
+                return values
+                break
