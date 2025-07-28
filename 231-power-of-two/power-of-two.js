@@ -3,14 +3,14 @@
  * @return {boolean}
  */
 var isPowerOfTwo = function(n) {
-    function twoMult(num){
-        if(Math.pow(2,num)>n){
-            return false;
-        }
-        if(Math.pow(2,num)==n){
+    function power(target){
+        if(target==1){
             return true;
         }
-        return twoMult(num+1);
+        if(target<1 || (target%2!=0)){
+            return false;
+        }
+        return power(target/2);
     }
-    return twoMult(0);
+    return power(n);
 };
