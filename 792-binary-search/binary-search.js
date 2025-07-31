@@ -9,14 +9,14 @@ var search = function(nums, target) {
     let mid;
     while(low<=high){
         mid=Math.floor((low+high)/2);
-        if(nums[mid]==target){
-            return mid;
+        if(nums[mid]<target){
+            low=mid+1;
         }
         if(nums[mid]>target){
             high=mid-1;
         }
-        if(nums[mid]<target){
-            low=mid+1;
+        if(nums[mid]===target){
+            return mid;
         }
     }
     return -1
