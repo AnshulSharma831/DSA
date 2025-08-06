@@ -5,7 +5,6 @@
 var reverseString = function(s) {
     let n=s.length;
     let t;
-    let x=0;
     for(let i=0;i<n/2;i++){
         t=s[i];
         s[i]=s[n-1-i]
