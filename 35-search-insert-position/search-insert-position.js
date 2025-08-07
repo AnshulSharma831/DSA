@@ -5,20 +5,19 @@
  */
 var searchInsert = function(nums, target) {
     let low=0;
-    let high=nums.length-1
+    let high=nums.length;
     let mid;
-    let closest=Infinity;
-    while(low<=high){
+    while(low<high){
         mid=Math.floor((low+high)/2);
         if(nums[mid]==target){
             return mid;
         }
-        if(nums[mid]<target){
+        if(nums[mid]>=target){
+            high=mid;
+        }
+        else{
             low=mid+1;
+            }
         }
-        if(nums[mid]>target){
-            high=mid-1;
-        }
-    }
     return low;
 };
