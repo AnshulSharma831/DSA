@@ -16,24 +16,29 @@ var sortArray = function(nums) {
     function mergeArr(leftArr,rightArr,left,mid,right){
         let i=0;
         let j=0;
+        let k=0;
         let res=[];
         let n1=mid-left+1;
         let n2=right-mid;
         while(i<n1 && j<n2){
             if(leftArr[i]<rightArr[j]){
-                res.push(leftArr[i]);
+                res[k]=leftArr[i];
+                k++;
                 i++;
             }else{
-                res.push(rightArr[j]);
+                res[k]=rightArr[j];
+                k++;
                 j++;
             }
         }
         while(i<n1){
-            res.push(leftArr[i]);
+            res[k]=leftArr[i];
+            k++;
             i++;
         }
         while(j<n2){
-            res.push(rightArr[j]);
+            res[k]=rightArr[j];
+            k++;
             j++;
         }
         return res;
