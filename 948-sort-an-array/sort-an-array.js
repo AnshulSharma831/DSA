@@ -38,6 +38,11 @@ var sortArray = function(nums) {
         }
         return res;
     }
-    let n=nums.length;
-    return mergeSort(nums,0,n-1);
+    let i=0;
+    let count=0
+    while(nums[i]!= undefined){
+        count+=1;
+        i++;
+    }
+    return mergeSort(nums,0,count-1);
 };
