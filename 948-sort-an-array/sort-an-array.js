@@ -7,7 +7,7 @@ var sortArray = function(nums) {
         if(left==right){
             return [nums[left]];
         }
-        let mid=Math.floor((left+right)/2);
+        let mid=Math.floor(left+(right-left)/2);
         let leftArr=mergeSort(nums,left,mid);
         let rightArr=mergeSort(nums,mid+1,right);
         return mergeArr(leftArr,rightArr);
