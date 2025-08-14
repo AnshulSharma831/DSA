@@ -10,13 +10,15 @@ var sortArray = function(nums) {
         let mid=Math.floor(left+(right-left)/2);
         let leftArr=mergeSort(nums,left,mid);
         let rightArr=mergeSort(nums,mid+1,right);
-        return mergeArr(leftArr,rightArr);
+        return mergeArr(leftArr,rightArr,left,mid,right);
     }
 
-    function mergeArr(leftArr,rightArr){
+    function mergeArr(leftArr,rightArr,left,mid,right){
         let i=0;
         let j=0;
         let res=[];
+        let n1=mid-left;
+        let n2=right-mid+1;
         while(i<leftArr.length && j<rightArr.length){
             if(leftArr[i]<rightArr[j]){
                 res.push(leftArr[i]);
