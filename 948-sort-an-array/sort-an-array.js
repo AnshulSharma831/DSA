@@ -26,7 +26,15 @@ var sortArray = function(nums) {
                 j++;
             }
         }
-        return [...res,...leftArr.slice(i),...rightArr.slice(j)];
+        while(i<leftArr.length){
+            res.push(leftArr[i]);
+            i++;
+        }
+        while(j<rightArr.length){
+            res.push(rightArr[j]);
+            j++;
+        }
+        return res;
     }
     return mergeSort(nums);
 };
