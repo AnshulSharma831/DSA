@@ -17,9 +17,9 @@ var sortArray = function(nums) {
         let i=0;
         let j=0;
         let res=[];
-        let n1=mid-left;
-        let n2=right-mid+1;
-        while(i<leftArr.length && j<rightArr.length){
+        let n1=mid-left+1;
+        let n2=right-mid;
+        while(i<n1 && j<n2){
             if(leftArr[i]<rightArr[j]){
                 res.push(leftArr[i]);
                 i++;
@@ -28,11 +28,11 @@ var sortArray = function(nums) {
                 j++;
             }
         }
-        while(i<leftArr.length){
+        while(i<n1){
             res.push(leftArr[i]);
             i++;
         }
-        while(j<rightArr.length){
+        while(j<n2){
             res.push(rightArr[j]);
             j++;
         }
