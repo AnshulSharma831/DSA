@@ -3,13 +3,13 @@
  * @return {number[]}
  */
 var sortArray = function(nums) {
-    function mergeSort(nums){
-        if(nums.length == 1){
-            return nums;
+    function mergeSort(nums,left,right){
+        if(left==right){
+            return [nums[left]];
         }
-        let mid=Math.floor(nums.length/2);
-        let leftArr=mergeSort(nums.slice(0,mid));
-        let rightArr=mergeSort(nums.slice(mid));
+        let mid=Math.floor((left+right)/2);
+        let leftArr=mergeSort(nums,left,mid);
+        let rightArr=mergeSort(nums,mid+1,right);
         return mergeArr(leftArr,rightArr);
     }
 
@@ -36,5 +36,6 @@ var sortArray = function(nums) {
         }
         return res;
     }
-    return mergeSort(nums);
+    let n=nums.length;
+    return mergeSort(nums,0,n-1);
 };
