@@ -10,18 +10,27 @@
  * @return {boolean}
  */
 var isPalindrome = function(head) {
-    let arr=[];
-    let temp=head;
-    while(temp!=null){
-        arr.push(temp.val);
-        temp=temp.next;
+    let slow=head;
+    let fast=head;
+    while(fast!=null && fast.next!=null){
+        slow=slow.next;
+        fast=fast.next.next;
     }
-    let mid=Math.floor(arr.length/2);
-    let n=arr.length-1;
-    for(let i=0;i<mid;i++){
-        if(arr[i]!=arr[n-i]){
-            return false;
+    let curr=null;
+    while(slow!=null){
+        let newnode=slow.next;
+        slow.next=curr;
+        curr=slow;
+        slow=newnode;
+    }
+    let left=head;
+    let right=curr;
+    while(right!=null){
+        if(left.val!=right.val){
+            return false
         }
+        left=left.next;
+        right=right.next;
     }
     return true;
 };
