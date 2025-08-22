@@ -14,14 +14,16 @@ var deleteDuplicates = function(head) {
         return head;
     }
 
-    let temp=head;
-    while(temp && temp.next){
-        if(temp.val==temp.next.val){
-            temp.next=temp.next.next;
+    let sent=new ListNode();
+    sent.next=head;
+    let prev=sent;
+    while(prev && prev.next.next && prev.next){
+        if(prev.next.val==prev.next.next.val){
+            prev.next=prev.next.next;
         }
         else{
-            temp=temp.next;
+            prev=prev.next;
         }
     }
-    return head;
+    return sent.next;
 };
