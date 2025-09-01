@@ -18,16 +18,7 @@ var rotateRight = function(head, k) {
         return head;
     }
     let f=head;
-    let count=0;
-    while(f!=null){
-        count++;
-        f=f.next;
-    }
-    if(k>count){
-        let newk=k%count;
-        k=newk;
-    }
-    f=head;
+    
     while(k>0){
         if(f.next==null){
             f=head;
