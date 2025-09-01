@@ -10,37 +10,46 @@
  * @param {ListNode} list2
  * @return {ListNode}
  */
-var mergeTwoLists = function(list1, list2) {
-    let sent=new ListNode();
-    let ans=sent;
-    let temp1=list1;
-    let temp2=list2;
-    while(temp1 && temp2){
-        if(temp1.val>temp2.val){
-            let newnode=new ListNode(temp2.val);
-            ans.next=newnode;
-            ans=ans.next;
-            temp2=temp2.next;
+var mergeTwoLists = function(l1, l2) {
+    // without using extra space
+    if(!l1){
+        return l2;
+    }
+    if(!l2){
+        return l1;
+    }
+    let curr=null;
+    if(l1.val>l2.val){
+        curr=l2;
+        l2=l2.next;
+    }
+    else{
+        curr=l1;
+        l1=l1.next;
+    }
+    let ans=curr;
+    while(l1 && l2){
+        if(l1.val>l2.val){
+           curr.next=l2;
+           l2=l2.next;
+           curr=curr.next; 
         }
         else{
-            let newnode=new ListNode(temp1.val);
-            ans.next=newnode;
-            ans=ans.next;
-            temp1=temp1.next;
+            curr.next=l1
+            l1=l1.next;
+            curr=curr.next;
         }
     }
-    while(temp1){
-        let newnode=new ListNode(temp1.val);
-        ans.next=newnode;
-        ans=ans.next;
-        temp1=temp1.next;
+    while(l1){
+        curr.next=l1;
+        l1=l1.next;
+        curr=curr.next;
     }
-    while(temp2){
-        let newnode=new ListNode(temp2.val);
-        ans.next=newnode;
-        ans=ans.next;
-        temp2=temp2.next;
+    while(l2){
+        curr.next=l2;
+        l2=l2.next;
+        curr=curr.next;
     }
+    return ans
 
-    return sent.next;
 };
