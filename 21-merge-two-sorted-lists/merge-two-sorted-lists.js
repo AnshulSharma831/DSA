@@ -11,42 +11,36 @@
  * @return {ListNode}
  */
 var mergeTwoLists = function(list1, list2) {
-    let l3 = new ListNode(0);  
-    let head = l3;
-
-    while (list1 !== null && list2 !== null) {
-        if (list1.val < list2.val) {
-            l3.next = new ListNode(list1.val);
-            list1 = list1.next;
-            l3 = l3.next;     
-        } else if (list1.val > list2.val) {
-            l3.next = new ListNode(list2.val);
-            list2 = list2.next;
-            l3 = l3.next;          
-        } else {
-            
-            l3.next = new ListNode(list1.val);
-            l3 = l3.next;
-            l3.next = new ListNode(list2.val);
-            l3 = l3.next;
-            list1 = list1.next;
-            list2 = list2.next;
+    let sent=new ListNode();
+    let ans=sent;
+    let temp1=list1;
+    let temp2=list2;
+    while(temp1 && temp2){
+        if(temp1.val>temp2.val){
+            let newnode=new ListNode(temp2.val);
+            ans.next=newnode;
+            ans=ans.next;
+            temp2=temp2.next;
+        }
+        else{
+            let newnode=new ListNode(temp1.val);
+            ans.next=newnode;
+            ans=ans.next;
+            temp1=temp1.next;
         }
     }
-
-
-    while (list1 !== null) {
-        l3.next = new ListNode(list1.val);
-        list1 = list1.next;
-        l3 = l3.next;
+    while(temp1){
+        let newnode=new ListNode(temp1.val);
+        ans.next=newnode;
+        ans=ans.next;
+        temp1=temp1.next;
+    }
+    while(temp2){
+        let newnode=new ListNode(temp2.val);
+        ans.next=newnode;
+        ans=ans.next;
+        temp2=temp2.next;
     }
 
- 
-    while (list2 !== null) {
-        l3.next = new ListNode(list2.val);
-        list2 = list2.next;
-        l3 = l3.next;
-    }
-
-    return head.next;  
+    return sent.next;
 };
