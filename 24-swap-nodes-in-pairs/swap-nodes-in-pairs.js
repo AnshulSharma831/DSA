@@ -13,20 +13,10 @@ var swapPairs = function(head) {
     if(!head || !head.next){
         return head;
     }
-    let curr=head;
-    let temp=curr.next;
-    let sent=new ListNode();
-    let prev=sent;
-    while(curr.next && curr){
-        curr.next=temp.next;
-        temp.next=curr;
-        prev.next=temp;
-        prev=temp.next;
-        if(!curr || !curr.next){
-            return sent.next;
-        }
-        curr=curr.next;
-        temp=curr.next;
-    }
-    return sent.next;
+    
+    let l=head;
+    let r=head.next;
+    l.next=swapPairs(r.next);
+    r.next=l;
+    return r
 };
