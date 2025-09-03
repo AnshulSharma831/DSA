@@ -3,22 +3,15 @@
  * @return {number}
  */
 var lengthOfLastWord = function(s) {
-    
-    let currsum=0;
-    let sum=0;
-    s=s+" ";
-    let len=s.length;
-    for(let i=0;i<len;i++){
-        if((s[i]==" " && sum!=0)){
-            currsum=sum;
-            sum=0;
-        }
-        else if(s[i]==" "){
-            sum=0;
-        }
-        else{
-            sum+=1;
-        }
+
+    let j=s.length-1;
+    let size=0;
+    while(j>0 && s[j]===" "){
+        j--;
     }
-    return currsum;
+    while(j>=0 && s[j]!=" "){
+        j--;
+        size+=1;
+    }
+    return size;
 };
