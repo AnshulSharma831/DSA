@@ -3,6 +3,8 @@
  * @return {number}
  */
 var maxFreqSum = function(s) {
+    //tc:- o(n)
+    //spc:- o(1) as letters are 26 only and cannot go outof this range
     let map={};
     for(let i=0;i<s.length;i++){
         if(!map[s[i]]){
