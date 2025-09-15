@@ -5,19 +5,24 @@
 var isPalindrome = function(s) {
     let left=0;
     let right=s.length-1;
-    s=s.toLowerCase();
+
     while(left<right){
-        while(left<right && !s[left].match(/[a-z0-9]/)){
-           left++; 
+        while(left<right && !isAlphaNumeric(s[left])){
+            left++;
         }
-        while(right>left && !s[right].match(/[a-z0-9]/)){
+        while(right>left && !isAlphaNumeric(s[right])){
             right--;
         }
-        if(s[left]!=s[right]){
+        if(s[left].toLowerCase()!=s[right].toLowerCase()){
             return false;
         }
         left++;
         right--;
     }
     return true;
+
+    function isAlphaNumeric(ch) {
+    let code = ch.charCodeAt(0);
+    return (code >= 48 && code <= 57) || (code >= 65 && code <= 90) || (code >= 97 && code <= 122);   
+    }
 };
