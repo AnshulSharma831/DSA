@@ -3,22 +3,26 @@
  * @return {boolean}
  */
 var isPalindrome = function(s) {
-    if(s==" " || s==""){
-        return true
-    }
-    let s1="";
-    for(let i=0;i<s.length;i++){
-        let ch=s[i].toLowerCase();
-        let code=ch.charCodeAt(0);
-        if((code>=97 && code<=122) || (code >= 48 && code <= 57)){
-            s1=s1+ch;
+    let left=0;
+    let right=s.length-1;
+
+    while(left<right){
+        while(left<right && !isAlphaNumeric(s[left])){
+            left++;
         }
-    }
-    let n=s1.length;
-    for(let j=0;j<Math.floor(s1.length/2);j++){
-        if(s1[j]!=s1[n-j-1]){
-            return false
+        while(right>left && !isAlphaNumeric(s[right])){
+            right--;
         }
+        if(s[left].toLowerCase()!=s[right].toLowerCase()){
+            return false;
+        }
+        left++;
+        right--;
     }
-    return true
+    return true;
+
+    function isAlphaNumeric(ch) {
+    let code = ch.charCodeAt(0);
+    return (code >= 48 && code <= 57) || (code >= 65 && code <= 90) || (code >= 97 && code <= 122);   
+    }
 };
