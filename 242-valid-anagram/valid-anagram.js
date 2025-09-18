@@ -5,7 +5,7 @@
  */
 var isAnagram = function(s, t) {
     let ob1={}
-    let ob2={}
+ 
     if(s.length!=t.length){
         return false;
     }
@@ -16,21 +16,14 @@ var isAnagram = function(s, t) {
             ob1[s[i]]=1;
         }
     }
-    for(let j=0;j<t.length;j++){
-        if(t[j] in ob2){
-            ob2[t[j]]+=1;
-        }else{
-            ob2[t[j]]=1;
-        }
-    }
-    for(let key in ob1){
-        if(key in ob2){
-            if(ob1[key]!=ob2[key]){
-                return false;
-            }
-        }else{
+    
+    for(let i=0;i<t.length;i++){
+        if(!ob1[t[i]] || ob1[t[i]]<0){
             return false;
+        }else{
+            ob1[t[i]]--;
         }
     }
+    
     return true;
 };
