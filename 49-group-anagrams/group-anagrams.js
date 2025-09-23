@@ -5,11 +5,21 @@
 var groupAnagrams = function(strs) {
     let map={};
     for(let i=0;i<strs.length;i++){
-        let key=strs[i].split("").sort().join("")
+        let freqArr=Array(26).fill(0);
+        let s=strs[i];
+        for(let j=0;j<s.length;j++){
+            let index=s[j].charCodeAt()-'a'.charCodeAt();
+            ++freqArr[index];
+        }
+        let key="";
+        for(let k=0;k<26;k++){
+            key=key+String.fromCharCode(k)+freqArr[k];
+        }
         if(!map[key]){
-            map[key]=[strs[i]]
-        }else{
-            map[key].push(strs[i]);
+            map[key]=[s];
+        }
+        else{
+            map[key].push(s);
         }
     }
     
