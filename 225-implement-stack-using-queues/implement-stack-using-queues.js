@@ -1,11 +1,8 @@
 
 var MyStack = function() {
-    this.q1=[];
-    this.q2=[];
-    this.f1=0;
-    this.r1=0;
-    this.f2=0;
-    this.r2=0;
+    this.q=[];
+    this.r=0;
+    this.f=0;
 };
 
 /** 
@@ -13,31 +10,23 @@ var MyStack = function() {
  * @return {void}
  */
 MyStack.prototype.push = function(x) {
-    this.q1[this.r1]=x;
-    this.r1+=1;
-    
+    this.q[this.r]=x;
+    this.r+=1;
 };
 
 /**
  * @return {number}
  */
 MyStack.prototype.pop = function() {
-    let n=this.r1-this.f1;
-    if(n===0) return undefined;
-
+    
+    let n=this.r-this.f;
     for(let i=0;i<n-1;i++){
-        this.q2[this.r2]=this.q1[this.f1];
-        this.r2+=1;
-        this.f1+=1;
+        this.q[this.r]=this.q[this.f];
+        this.r+=1;
+        this.f+=1;
     }
-    let ele=this.q1[this.f1];
-    this.f1+=1;
-    this.q1=this.q2;
-    this.f1=0;
-    this.r1=this.r2;
-    this.q2=[];
-    this.r2=0;
-    this.f2=0;
+    let ele=this.q[this.f];
+    this.f+=1;
     return ele;
 };
 
@@ -45,15 +34,15 @@ MyStack.prototype.pop = function() {
  * @return {number}
  */
 MyStack.prototype.top = function() {
-    let top=this.q1[this.r1-1]
-    return top;
+    let ans=this.q[this.r-1];
+    return ans;
 };
 
 /**
  * @return {boolean}
  */
 MyStack.prototype.empty = function() {
-    return (this.r1-this.f1)<=0;
+    return (this.r-this.f)<=0;
 };
 
 /** 
