@@ -12,19 +12,11 @@ var isValid = function(s) {
             stack.push(s[i]);
         }
         else{
-            if(stack.length==0){
-                return false
-            }
             let top=stack.pop();
-            if((top=="[" && s[i]!=="]") || (top=="{" && s[i]!=="}") || (top=="(" && s[i]!==")")){
+            if(!top || (top=="[" && s[i]!=="]") || (top=="{" && s[i]!=="}") || (top=="(" && s[i]!==")")){
                 return false;
             }
         }
     }
-    if(stack.length==0){
-        return true;
-    }
-    else{
-        return false;
-    }
+    return (stack.length===0);
 };
