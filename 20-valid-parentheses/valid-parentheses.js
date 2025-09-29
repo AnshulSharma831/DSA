@@ -3,20 +3,19 @@
  * @return {boolean}
  */
 var isValid = function(s) {
-    if(s.length<=1){
-        return false
-    }
     let stack=[];
     for(let i=0;i<s.length;i++){
-        if(s[i]=="[" || s[i]=="{" || s[i]=="("){
+        if(s[i]=="{" || s[i]=="[" || s[i]=="("){
             stack.push(s[i]);
-        }
-        else{
-            let top=stack.pop();
-            if(!top || (top=="[" && s[i]!=="]") || (top=="{" && s[i]!=="}") || (top=="(" && s[i]!==")")){
+        }else{
+            let ans=stack.pop();
+            if((s[i]=="}" && ans!="{") || (s[i]=="]" && ans!="[") || (s[i]==")" && ans!="(")){
                 return false;
             }
         }
     }
-    return (stack.length===0);
+    if(stack.length!=0){
+        return false;
+    }
+    return true;
 };
