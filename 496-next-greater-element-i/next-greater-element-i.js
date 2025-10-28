@@ -4,6 +4,8 @@
  * @return {number[]}
  */
 var nextGreaterElement = function(nums1, nums2) {
+    //space complexity : O(N)
+    //time complexity : O(N)
     let ngmap={};
     let stack=[];
     let n=nums2.length;
