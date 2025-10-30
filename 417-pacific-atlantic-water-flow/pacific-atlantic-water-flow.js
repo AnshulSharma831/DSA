@@ -13,7 +13,7 @@ var pacificAtlantic = function(heights) {
     const dfs=(r,c,visited,prevHeight)=>{
         if (r<0 || c<0 || r>=m || c>=n || visited[r][c] || heights[r][c]<prevHeight) return;
         visited[r][c]=true;
-        for (let [dr,dc] of dirs){
+        for(let [dr,dc] of dirs){
             dfs(r+dr,c+dc,visited,heights[r][c]);
         }
     };
@@ -28,6 +28,5 @@ var pacificAtlantic = function(heights) {
             if(pacific[i][j] && atlantic[i][j]) result.push([i,j]);
         }
     }
-
     return result;
 };
