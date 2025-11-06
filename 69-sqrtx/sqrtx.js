@@ -3,29 +3,22 @@
  * @return {number}
  */
 var mySqrt = function(x) {
-    if(typeof x!=="number" || isNaN(x) || x<0){
-        return NaN;
-    }
-    if(x===0 || x===1){
-        return x;
-    }
-    let low=1;
-    let high=x;
-    let result=0;
-
-    while(low<=high){
-        let mid=Math.floor((low+high)/2);
-        let sq=mid*mid;
-        if(sq==x){
+    let l=1;
+    let h=x;
+    let sqrt=0;
+    let ans=0;
+    while(l<=h){
+        let mid=Math.floor((l+h)/2);
+        sqrt=mid*mid;
+        if(sqrt==x){
             return mid;
         }
-        if(sq>x){
-            high=mid-1;
-        }
-        else{
-            result=mid;
-            low=mid+1;
+        if(sqrt<x){
+            l=mid+1;
+            ans=mid;
+        }if(sqrt>x){
+            h=mid-1;
         }
     }
-    return result;
+    return ans;
 };
