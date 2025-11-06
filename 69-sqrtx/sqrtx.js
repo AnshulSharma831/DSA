@@ -8,7 +8,7 @@ var mySqrt = function(x) {
     let sqrt=0;
     let ans=0;
     while(l<=h){
-        let mid=Math.floor((l+h)/2);
+        let mid=Math.floor(l+((h-l)/2));
         sqrt=mid*mid;
         if(sqrt==x){
             return mid;
