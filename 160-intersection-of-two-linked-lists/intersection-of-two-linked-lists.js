@@ -12,12 +12,17 @@
  * @return {ListNode}
  */
 var getIntersectionNode = function(headA, headB) {
+    let map=new Set();
     let temp=headA;
-    let trav=headB;
-    while(temp!=trav){
-        temp=temp==null? temp=headB: temp.next;
-        trav=trav==null? trav=headA: trav.next;
-        
+    while(temp!=null){
+        map.add(temp);
+        temp=temp.next;
     }
-    return temp;
+    let trav=headB;
+    while(trav!=null){
+        if(map.has(trav)){
+            return trav;
+        }
+        trav=trav.next
+    }
 };
