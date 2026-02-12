@@ -20,9 +20,8 @@ var trap = function(height) {
         if(height[i]>right){
             right=height[i];
         }
-        maxr.push(right);
+        maxr[i]=right;
     }
-    maxr.reverse();
 
     let summ=0;
     for(let i=0;i<maxl.length;i++){
