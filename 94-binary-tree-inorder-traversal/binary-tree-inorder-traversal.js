@@ -11,15 +11,15 @@
  * @return {number[]}
  */
 var inorderTraversal = function(root) {
-    let inor=[];
-    function inorder(curr){
-        if(!curr){
+    let ans=[];
+    function intraverse(curr){
+        if(curr==null){
             return;
         }
-        inorder(curr.left);
-        inor.push(curr.val);
-        inorder(curr.right);
+        intraverse(curr.left);
+        ans.push(curr.val);
+        intraverse(curr.right);
     }
-    inorder(root);
-    return inor;
+    intraverse(root);
+    return ans;
 };
