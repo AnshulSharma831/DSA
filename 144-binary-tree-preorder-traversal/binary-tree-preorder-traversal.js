@@ -14,8 +14,12 @@ var preorderTraversal = function(root) {
     let ans = [];
     let stack = [];
     
-    if (root) stack.push(root);
-
+    if (root){
+        stack.push(root);
+    }
+    else{
+        return [];
+    }
     while (stack.length) {
         let curr = stack.pop();
         ans.push(curr.val);
