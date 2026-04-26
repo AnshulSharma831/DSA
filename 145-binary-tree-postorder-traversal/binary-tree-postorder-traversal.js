@@ -11,15 +11,25 @@
  * @return {number[]}
  */
 var postorderTraversal = function(root) {
-    let ans=[]
-    function posttraverse(curr){
-        if(curr==null){
-            return;
-        }
-        posttraverse(curr.left);
-        posttraverse(curr.right);
-        ans.push(curr.val);
+    if(!root){
+        return [];
     }
-    posttraverse(root);
+    let ans=[];
+    let stack1=[root];
+    let stack2=[];
+    let curr;
+    while(stack1.length){
+        curr=stack1.pop();
+        stack2.push(curr);
+        if(curr.left){
+            stack1.push(curr.left);
+        }
+        if(curr.right){
+            stack1.push(curr.right);
+        }
+    }
+    while(stack2.length){
+        ans.push(stack2.pop().val);
+    }
     return ans;
 };
