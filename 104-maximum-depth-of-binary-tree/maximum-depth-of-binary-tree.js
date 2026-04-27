@@ -11,15 +11,10 @@
  * @return {number}
  */
 var maxDepth = function(root) {
-    let level=0;
-    let depth=(curr,size)=>{
-        if(!curr){
-            return;
-        }
-        level=Math.max(level,size);
-        depth(curr.left,size+1);
-        depth(curr.right,size+1);
+    if(!root){
+        return 0;
     }
-    depth(root,1);
-    return level;
+    let leftmax=maxDepth(root.left);
+    let rightmax=maxDepth(root.right);
+    return 1+Math.max(leftmax,rightmax);
 };
