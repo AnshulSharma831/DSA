@@ -15,13 +15,12 @@ var levelOrder = function(root) {
         return [];
     }
     let q=[root];
-    let curr;
     let ans=[];
     while(q.length){
         let levelarr=[];
         let levelsize=q.length;
         for(let i=0;i<levelsize;i++){
-            curr=q.shift();
+            let curr=q.shift();
             if(curr.left){
                 q.push(curr.left);
             }
