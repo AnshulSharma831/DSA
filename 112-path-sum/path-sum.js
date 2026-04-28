@@ -12,6 +12,9 @@
  * @return {boolean}
  */
 var hasPathSum = function(root, targetSum) {
+    if(!root){
+        return false;
+    }
     let ans=false;
 
     let traverse=(curr,sum)=>{
