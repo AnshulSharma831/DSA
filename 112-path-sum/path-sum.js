@@ -15,7 +15,7 @@ var hasPathSum = function(root, targetSum) {
     let ans=false;
 
     let traverse=(curr,sum)=>{
-        if(!curr){
+        if(!curr || ans){
             return;
         }
         let newSum=sum+curr.val;
