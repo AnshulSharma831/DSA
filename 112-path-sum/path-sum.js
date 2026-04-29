@@ -15,22 +15,12 @@ var hasPathSum = function(root, targetSum) {
     if(!root){
         return false;
     }
-    let ans=false;
-
-    let traverse=(curr,sum)=>{
-        if(!curr || ans){
-            return;
+    if(!root.left && !root.right){
+        if(targetSum==root.val){
+            return true;
         }
-        let newSum=sum+curr.val;
-        if(!curr.left && !curr.right){
-            if(newSum==targetSum){
-                ans=true;
-            }
-        }
-
-        traverse(curr.left,newSum);
-        traverse(curr.right,newSum);
     }
-    traverse(root,0);
-    return ans;
+    let hasleftsum=hasPathSum(root.left,targetSum-root.val);
+    let hasrightsum=hasPathSum(root.right,targetSum-root.val);
+    return hasleftsum || hasrightsum;
 };
