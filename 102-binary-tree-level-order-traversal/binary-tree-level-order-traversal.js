@@ -11,11 +11,8 @@
  * @return {number[][]}
  */
 var levelOrder = function(root) {
-    if(!root){
-        return [];
-    }
-    let ans=[];
-    let recursion=(curr,level)=>{
+    let ans=[]
+    let levelTraverse=(curr,level)=>{
         if(!curr){
             return;
         }
@@ -23,9 +20,9 @@ var levelOrder = function(root) {
             ans[level]=[];
         }
         ans[level].push(curr.val);
-        recursion(curr.left,level+1);
-        recursion(curr.right,level+1);
+        levelTraverse(curr.left,level+1);
+        levelTraverse(curr.right,level+1);
     }
-    recursion(root,0);
+    levelTraverse(root,0);
     return ans;
 };
