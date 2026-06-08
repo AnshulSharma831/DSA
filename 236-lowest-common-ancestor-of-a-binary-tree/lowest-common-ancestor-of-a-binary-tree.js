@@ -14,9 +14,6 @@
 var lowestCommonAncestor = function(root, p, q) {
     let lca=null;
     let traverse=(curr)=>{
-        if(lca!=null){
-            return;
-        }
         let count=0
         if(!curr){
             return 0;
