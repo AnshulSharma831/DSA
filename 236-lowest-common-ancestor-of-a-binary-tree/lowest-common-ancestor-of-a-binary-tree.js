@@ -24,7 +24,7 @@ var lowestCommonAncestor = function(root, p, q) {
             count+=1;
         }
         count+=ansOnleft+ansOnright;
-        if(count===2 && lca==null){
+        if(count===2 && !lca){
             lca=curr;
         }
         return count;
