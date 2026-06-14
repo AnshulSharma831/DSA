@@ -20,6 +20,13 @@ var lowestCommonAncestor = function(root, p, q) {
         if(!curr){
             return 0;
         }
+        if(p.val<curr.val && q.val<curr.val){
+            let leftans=traverse(curr.left);
+        }
+        else if(p.val>curr.val && q.val>curr.val){
+            let rightans=traverse(curr.right);
+        }
+
         let leftans=traverse(curr.left);
         let rightans=traverse(curr.right);
         if(curr.val==p.val || curr.val==q.val){
