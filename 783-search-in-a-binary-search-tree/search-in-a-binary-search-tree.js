@@ -12,13 +12,14 @@
  * @return {TreeNode}
  */
 var searchBST = function(root, val) {
-    if (!root) return null;
-
-    if (root.val === val) return root;
-
-    if (val < root.val) {
-        return searchBST(root.left, val);
+    //Bottom up recursion
+    if(!root){
+        return null;
     }
-
-    return searchBST(root.right, val);
+    let leftBST=searchBST(root.left,val);
+    let rightBST=searchBST(root.right,val);
+    if(root.val==val){
+        return root;
+    }
+    return leftBST || rightBST;
 };
