@@ -12,15 +12,22 @@
  * @return {number}
  */
 var kthSmallest = function(root, k) {
-    let arr=[];
+    let ans=null;
+    let count=k;
     let traverse=(curr)=>{
+        if(ans){
+            return;
+        }
         if(!curr){
             return;
         }
         traverse(curr.left);
-        arr.push(curr.val);
+        --count;
+        if(count==0){
+            ans=curr.val;
+        }
         traverse(curr.right);
     }
     traverse(root);
-    return arr[k-1];
+    return ans;
 };
