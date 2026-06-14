@@ -13,33 +13,13 @@
  */
 var insertIntoBST = function(root, val) {
     if(!root){
-        let node=new TreeNode(val,null,null);
-        return node;
+        return new TreeNode(val,null,null);
     }
-    let ans=false;
-    let traverse=(curr)=>{
-        if(!curr){
-            return;
-        }
-        if(val<curr.val){
-            traverse(curr.left,val);
-            if(!ans){
-                let node=new TreeNode(val,null,null);
-                curr.left=node;
-                ans=true;
-            }
-            return;
-        }
-        else{
-            traverse(curr.right,val);
-            if(!ans){
-                let node=new TreeNode(val,null,null);
-                curr.right=node;
-                ans=true;
-            }
-            return;
-        }
+    if(val>root.val){
+        root.right=insertIntoBST(root.right,val);
     }
-    traverse(root,val);
+    else{
+        root.left=insertIntoBST(root.left,val);
+    }
     return root;
 };
